@@ -36,15 +36,13 @@ Product.init(
       },
       category_id: {
         type: DataTypes.INTEGER,
-        include: [{
-          model: Category,
-          // attrubute: [
-          // category_id
-          // ],
-        }]
+        references: {
+          model: "category",
+          key: "id"
+        }
+        }
       },
     },
-  },
   {
     sequelize,
     timestamps: false,
