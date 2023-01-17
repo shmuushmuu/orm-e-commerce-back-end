@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
           { model: Product }
         ]
     });
-    res.json(locationData);
+    res.json(categoryData);
 } catch (err) {
     console.error(err);
     res.json(err);
