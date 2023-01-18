@@ -5,7 +5,11 @@ const { Category, Product } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = await Category.findAll({
+      include: [
+        { model: Product }
+      ]
+    });
     res.json(categoryData);
 } catch (err) {
     console.error(err);
@@ -39,7 +43,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    constcategoryData = await Category.update(req.body, {
+    const categoryData = await Category.update(req.body, {
       where: {
         id: req.params.id,
       }
